@@ -61,9 +61,10 @@ DATABASES = {
         'NAME': 'django_db',
         'USER': 'django_user',
         'PASSWORD': 'secretpass123',
-        'HOST': 'pg-dbh',
+        'HOST': 'pg-db',
         'PORT': '5432',
     }
+
 }
 
 # Password validation
