@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: frontend
-          image: rashed271202/2tier-frontend:latest
+          image: rashed271202/2tier-microservice_frontend:latest
           ports:
             - containerPort: 3000
           env:

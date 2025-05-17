@@ -15,7 +15,7 @@ spec:
     spec:
       initContainers:
         - name: migrate-and-create-superuser
-          image: rashed271202/2tier-backend:latest
+          image: rashed271202/2tier-microservice_backend:latest
           command: ["/bin/sh", "-c"]
           args:
             - |
