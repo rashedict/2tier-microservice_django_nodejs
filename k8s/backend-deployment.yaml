@@ -13,49 +13,6 @@ spec:
       labels:
         app: backend
     spec:
-      initContainers:
-        - name: migrate-and-create-superuser
-          image: rashed271202/2tier-microservice_backend:latest
-          command: ["/bin/sh", "-c"]
-          args:
-            - |
-              python manage.py migrate &&
-              python manage.py createsuperuser --noinput || true
-          env:
-            - name: DJANGO_SECRET_KEY
-              valueFrom:
-                secretKeyRef:
-                  name: backend-secret
-                  key: DJANGO_SECRET_KEY
-            - name: DB_NAME
-              value: django_db
-            - name: DB_USER
-              value: django_user
-            - name: DB_PASSWORD
-              valueFrom:
-                secretKeyRef:
-                  name: backend-secret
-                  key: DB_PASSWORD
-            - name: DB_HOST
-              value: pg-db
-            - name: DB_PORT
-              value: "5432"
-            - name: DJANGO_SUPERUSER_USERNAME
-              valueFrom:
-                secretKeyRef:
-                  name: backend-secret
-                  key: DJANGO_SUPERUSER_USERNAME
-            - name: DJANGO_SUPERUSER_EMAIL
-              valueFrom:
-                secretKeyRef:
-                  name: backend-secret
-                  key: DJANGO_SUPERUSER_EMAIL
-            - name: DJANGO_SUPERUSER_PASSWORD
-              valueFrom:
-                secretKeyRef:
-                  name: backend-secret
-                  key: DJANGO_SUPERUSER_PASSWORD
-
       containers:
         - name: backend
           image: rashed271202/2tier-microservice_backend:latest

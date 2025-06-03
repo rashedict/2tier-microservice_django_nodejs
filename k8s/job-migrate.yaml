@@ -50,3 +50,4 @@ spec:
             secretKeyRef:
               name: backend-secret
               key: DJANGO_SUPERUSER_PASSWORD
+
