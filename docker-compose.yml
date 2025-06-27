@@ -1,0 +1,31 @@
+version: '3.9'
+
+services:
+  pg-db:
+    image: postgres:13
+    environment:
+      POSTGRES_DB: django_db
+      POSTGRES_USER: django_user
+      POSTGRES_PASSWORD: secretpass123
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    networks:
+      - app-network
+
+  web:  # Django service
+    build: .
+    command: python manage.py runserver 0.0.0.0:8000
+    volumes:
+      - .:/code
+    ports:
+      - "8000:8000"
+    depends_on:
+      - pg-db
+    networks:
+      - app-network
+
+volumes:
+  pgdata:
+
+networks:
+  app-network:
