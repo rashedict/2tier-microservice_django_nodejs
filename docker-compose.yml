@@ -2,7 +2,7 @@ version: '3.9'
 
 services:
   pg-db:
-    image: postgres:13
+    image: postgres:15
     environment:
       POSTGRES_DB: django_db
       POSTGRES_USER: django_user
@@ -12,15 +12,31 @@ services:
     networks:
       - app-network
 
-  web:  # Django service
-    build: .
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
     command: python manage.py runserver 0.0.0.0:8000
     volumes:
-      - .:/code
-    ports:
-      - "8000:8000"
+      - ./backend:/app
+    environment:
+      - DJANGO_DB_HOST=pg-db
+      - DJANGO_DB_NAME=django_db
+      - DJANGO_DB_USER=django_user
+      - DJANGO_DB_PASSWORD=secretpass123
     depends_on:
       - pg-db
+    networks:
+      - app-network
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"  # Only this is exposed to localhost
+    environment:
+      - BACKEND_URL=http://backend:8000
     networks:
       - app-network
 
