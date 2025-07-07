@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Products | Largest Online Shopping Mall</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #f9f9f9;
+      color: #333;
+      padding: 20px;
+      margin: 0;
+    }
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 30px;
+    }
+    .nav {
+      display: flex;
+      gap: 20px;
+    }
+    .nav a {
+      text-decoration: none;
+      color: #222;
+      font-weight: 300;
+      border-bottom: 2px solid transparent;
+    }
+    .nav a:hover {
+      border-color: #333;
+    }
+    .welcome-logout {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+    button {
+      padding: 8px 16px;
+      background-color: #111;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #000;
+    }
+    .products-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+    }
+    .product-card {
+      background-color: #fff;
+      padding: 15px;
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      text-align: center;
+    }
+    .product-card img {
+      max-width: 100%;
+      border-radius: 4px;
+    }
+    .product-title {
+      font-weight: 600;
+      margin-top: 10px;
+      margin-bottom: 6px;
+      color: #111;
+    }
+    .product-price {
+      color: #555;
+      font-size: 14px;
+      margin-bottom: 10px;
+    }
+    .footer {
+      text-align: center;
+      font-size: 12px;
+      color: #777;
+      margin-top: 40px;
+      padding: 15px 0;
+      border-top: 1px solid #ddd;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="header">
+    <div class="nav">
+      <%- include('partials/menu') %>
+    </div>
+    <div class="welcome-logout">
+      <h2>Welcome, <%= username %>!</h2>
+      <form action="/logout" method="post">
+        <button type="submit">Logout</button>
+      </form>
+    </div>
+  </div>
+
+  <h1>Our Products</h1>
+  <div class="products-container">
+    <!-- Example Product 1 -->
+    <div class="product-card">
+      <img src="https://via.placeholder.com/150" alt="Product Image">
+      <div class="product-title">Product Name 1</div>
+      <div class="product-price">$19.99</div>
+      <button>Add to Cart</button>
+    </div>
+
+    <!-- Example Product 2 -->
+    <div class="product-card">
+      <img src="https://via.placeholder.com/150" alt="Product Image">
+      <div class="product-title">Product Name 2</div>
+      <div class="product-price">$29.99</div>
+      <button>Add to Cart</button>
+    </div>
+
+    <!-- Example Product 3 -->
+    <div class="product-card">
+      <img src="https://via.placeholder.com/150" alt="Product Image">
+      <div class="product-title">Product Name 3</div>
+      <div class="product-price">$15.99</div>
+      <button>Add to Cart</button>
+    </div>
+
+    <!-- Add more products as needed -->
+  </div>
+
+  <div class="footer">
+    &copy; 2025 The Largest Shopping Mall in Bangladesh. All rights reserved. | Version: 1
+  </div>
+
+</body>
+</html>

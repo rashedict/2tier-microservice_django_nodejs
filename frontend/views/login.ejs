@@ -5,22 +5,29 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Login - The largest shopping mall in Bangladesh</title>
   <style>
-    body {
+    html, body {
+      height: 100%;
+      margin: 0;
+      padding: 0;
       font-family: Arial, sans-serif;
-      background-color: #f8f9fa; /* off-white */
-      color: #222; /* soft black */
+      background-color: #f8f9fa;
+      color: #222;
+      display: flex;
+      flex-direction: column;
+    }
+    .content {
+      flex: 1;
       display: flex;
       justify-content: center;
       align-items: center;
-      height: 100vh;
-      margin: 0;
     }
     .login-box {
-      background-color: #ffffff; /* white */
+      background-color: #ffffff;
       padding: 24px 32px;
       border-radius: 6px;
       width: 300px;
       border: 1px solid #ddd;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
     }
     h2 {
       text-align: center;
@@ -47,7 +54,7 @@
     button {
       width: 100%;
       padding: 10px;
-      background-color: #222; /* black */
+      background-color: #222;
       color: #fff;
       border: none;
       border-radius: 4px;
@@ -55,7 +62,7 @@
       cursor: pointer;
     }
     button:hover {
-      background-color: #444; /* light black */
+      background-color: #444;
     }
     .error {
       color: #c00;
@@ -63,23 +70,37 @@
       margin-bottom: 10px;
       text-align: center;
     }
+    .footer {
+      text-align: center;
+      font-size: 12px;
+      color: #777;
+      padding: 10px 0;
+      border-top: 1px solid #ddd;
+      background-color: #f8f9fa;
+    }
   </style>
 </head>
 <body>
-  <div class="login-box">
-    <h2>Login</h2>
-    <% if (error) { %>
-      <div class="error"><%= error %></div>
-    <% } %>
-    <form action="/login" method="post" autocomplete="off">
-      <label for="username">Username</label>
-      <input type="text" id="username" name="username" required />
+  <div class="content">
+    <div class="login-box">
+      <h2>Login</h2>
+      <% if (error) { %>
+        <div class="error"><%= error %></div>
+      <% } %>
+      <form action="/login" method="post" autocomplete="off">
+        <label for="username">Username</label>
+        <input type="text" id="username" name="username" required />
 
-      <label for="password">Password</label>
-      <input type="password" id="password" name="password" required />
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password" required />
 
-      <button type="submit">Login</button>
-    </form>
+        <button type="submit">Login</button>
+      </form>
+    </div>
+  </div>
+
+  <div class="footer">
+    &copy; 2025 The Largest Shopping Mall in Bangladesh. All rights reserved. | Version: 1.0.1
   </div>
 </body>
 </html>
